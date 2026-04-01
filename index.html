@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Generatore PDF Listino Figurativo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs" type="module"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Generatore PDF Listino Figurativo</h1>
+      <p>Carica 1 file Excel e 2 PDF catalogo. L'app prova ad associare i prodotti alle pagine dei PDF e genera un PDF riepilogativo.</p>
+    </header>
+
+    <section class="card grid">
+      <label class="field">
+        <span>File Excel</span>
+        <input id="excelFile" type="file" accept=".xlsx,.xls" />
+      </label>
+      <label class="field">
+        <span>PDF catalogo 1</span>
+        <input id="pdfFile1" type="file" accept="application/pdf" />
+      </label>
+      <label class="field">
+        <span>PDF catalogo 2</span>
+        <input id="pdfFile2" type="file" accept="application/pdf" />
+      </label>
+    </section>
+
+    <section class="card actions">
+      <button id="analyzeBtn">Analizza file</button>
+      <button id="generateBtn" disabled>Genera PDF</button>
+      <button id="downloadJsonBtn" disabled>Scarica JSON match</button>
+    </section>
+
+    <section class="card">
+      <h2>Stato</h2>
+      <div id="status" class="status">In attesa dei file...</div>
+    </section>
+
+    <section class="card">
+      <h2>Anteprima abbinamenti</h2>
+      <div class="table-wrap">
+        <table id="previewTable">
+          <thead>
+            <tr>
+              <th>Codice</th>
+              <th>Nome</th>
+              <th>Prezzo</th>
+              <th>Categoria</th>
+              <th>Fonte visiva</th>
+              <th>Match</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
